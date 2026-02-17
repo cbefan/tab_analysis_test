@@ -1,0 +1,37 @@
+[workspace]
+channels = ["conda-forge"]
+name = "tab_scripts"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[feature.calc.pypi-dependencies]
+anisoap = "*"
+featomic = "*"
+
+[feature.calc.dependencies]
+python = ">=3.12,<3.13"
+signac = ">=2.3.0,<3"
+signac-flow = ">=0.29.0,<0.30"
+numpy = ">=2.2.6,<3"
+dynasor = ">=2.3,<3"
+ase = ">=3.26.0,<4"
+matplotlib = ">=3.10.6,<4"
+rust = ">=1.89.0,<1.90"
+chemiscope = ">=0.8.6,<0.9"
+freud = ">=3.5.0,<4"
+pymbar = ">=4.2.0,<5"
+
+[feature.lmp.dependencies]
+python = ">=3.13,<3.14"
+signac = ">=2.3.0,<3"
+signac-flow = ">=0.29.0,<0.30"
+numpy = ">=2.2.6,<3"
+ase = ">=3.26.0,<4"
+lammps = ">=2024.8.29,<2025"
+pymbar = ">=4.0.3,<5"
+
+[environments]
+calc = ["calc"]
+lmp = ["lmp"]
