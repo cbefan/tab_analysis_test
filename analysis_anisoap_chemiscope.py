@@ -23,8 +23,8 @@ resolution = 1000
 with open('/mnt/researchdrive/charles/chark/tab_data/anisoap/pcovr/pickles/layering.pkl','rb') as f:
     layering_dic = pickle.load(f)
 
-with open('/mnt/researchdrive/charles/chark/tab_data/anisoap/pcovr/pickles/Rg2s.pkl','rb') as f:
-    Rg2s_dic = pickle.load(f)
+with open('/mnt/researchdrive/charles/chark/tab_data/anisoap/pcovr/pickles/Rgs.pkl','rb') as f:
+    Rgs_dic = pickle.load(f)
 
 with open('/mnt/researchdrive/charles/chark/tab_data/anisoap/pcovr/pickles/features.pkl','rb') as f:
     features_dic = pickle.load(f)
@@ -35,7 +35,7 @@ with open('/mnt/researchdrive/charles/chark/tab_data/anisoap/pcovr/pickles/asoap
     
 features = []
 layers = []
-Rg2s = []
+Rgs = []
 frames = []
 traj = []
 pcovs = []
@@ -44,7 +44,7 @@ for job in layering_dic:
     features.extend(features_dic[job])
     layers.extend(layering_dic[job])
     frames.extend(frames_dic[job])
-    #Rg2s.extend(Rg2s_dic[job])
+    #Rgs.extend(Rgs_dic[job])
 
     job_features = features_dic[job]
     idx = 0
@@ -54,7 +54,7 @@ for job in layering_dic:
         sample_indices = np.random.choice(np.cumsum(np.ones(N_mol))-1,size=n_samples,replace=False).astype(int)
         distances = frame.get_all_distances(mic=True,vector=False)
         for i in sample_indices:
-            Rg2s.append(Rg2s_dic[job][i+idx])
+            Rgs.append(Rgs_dic[job][i+idx])
             mol_indices = [i,i+N_mol,i+2*N_mol,i+3*N_mol]
             mol_in_cutoff = distances[0,:]<-1
             for mol_index in mol_indices:
@@ -107,7 +107,7 @@ properties = {      # the data
     },
     "Radius of Gyration": {
         "target": "structure",
-        "values": Rg2s,
+        "values": Rgs,
         "description": ""
     },
 }

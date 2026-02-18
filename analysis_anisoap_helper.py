@@ -77,6 +77,7 @@ def anisaponify_frame(frames,calculator,scrungus):
         c = features.block(2).values.squeeze()
         #length = a.shape[0]
         #feature_vector = np.concatenate([a,b,c[length:],c[:length]],axis=1)
+        #print(b.shape[0]/len(frames));exit()
         length = int(b.shape[0]/len(frames))
         feature_vectors = []
         for i in range(len(frames)):
